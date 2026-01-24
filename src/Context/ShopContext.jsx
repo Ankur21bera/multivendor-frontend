@@ -12,7 +12,7 @@ const ShopContextProvider = (props) => {
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
   const [products, setProducts] = useState([]);
-  const backendUrl = "http://localhost:4000";
+  const backendUrl = "https://multivendor-backend-xi.vercel.app";
   const [token, setToken] = useState("");
  
 
