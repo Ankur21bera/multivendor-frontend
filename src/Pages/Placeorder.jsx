@@ -72,12 +72,57 @@ const Placeorder = () => {
   const { finalTotal } = getCartSummary();
 
 
+// const handleRazorpayPayment = async (orderItems) => {
+//   const { data } = await axios.post(
+//     `${backendUrl}/api/order/razorpay`,
+//     { items: orderItems, amount: finalTotal, address: formData },
+//     { headers: { Authorization: `Bearer ${token}` } }
+//   );
+
+//   const razorpayOrder = data.order;
+//   const mongoOrderId = data.mongoOrderId;
+
+//   const options = {
+//     key: import.meta.env.VITE_RAZORPAY_KEY,
+//     amount: razorpayOrder.amount,
+//     currency: "INR",
+//     order_id: razorpayOrder.id,
+
+//     handler: async function (response) {
+//       const verifyRes = await axios.post(
+//         `${backendUrl}/api/order/verify-razorpay`,
+        
+//         {
+//           razorpay_order_id: response.razorpay_order_id,
+//           razorpay_payment_id: response.razorpay_payment_id,
+//           razorpay_signature: response.razorpay_signature,
+//           orderId: mongoOrderId, 
+//         },
+//         { headers: { Authorization: `Bearer ${token}` } }
+//       );
+
+//       if (verifyRes.data.success) {
+//         setCartItems({});
+//         navigate("/orders");
+//       }
+//     },
+//   };
+
+//   new window.Razorpay(options).open();
+// };
+
+
 const handleRazorpayPayment = async (orderItems) => {
   const { data } = await axios.post(
     `${backendUrl}/api/order/razorpay`,
     { items: orderItems, amount: finalTotal, address: formData },
     { headers: { Authorization: `Bearer ${token}` } }
   );
+
+  if (!data.success || !data.order) {
+    toast.error("Failed to initiate Razorpay payment");
+    return;
+  }
 
   const razorpayOrder = data.order;
   const mongoOrderId = data.mongoOrderId;
@@ -91,12 +136,11 @@ const handleRazorpayPayment = async (orderItems) => {
     handler: async function (response) {
       const verifyRes = await axios.post(
         `${backendUrl}/api/order/verify-razorpay`,
-        
         {
           razorpay_order_id: response.razorpay_order_id,
           razorpay_payment_id: response.razorpay_payment_id,
           razorpay_signature: response.razorpay_signature,
-          orderId: mongoOrderId, 
+          orderId: mongoOrderId,
         },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -104,13 +148,14 @@ const handleRazorpayPayment = async (orderItems) => {
       if (verifyRes.data.success) {
         setCartItems({});
         navigate("/orders");
+      } else {
+        toast.error("Payment verification failed");
       }
     },
   };
 
   new window.Razorpay(options).open();
 };
-
 
 
   
