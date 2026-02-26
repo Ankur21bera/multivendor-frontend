@@ -34,7 +34,7 @@ const Newsletterbox = () => {
             type="email"
             required
             placeholder="Enter your email address"
-            className="w-full px-4 py-3 text-sm text-gray-800 rounded-md outline-none"
+            className="w-full px-4 py-3 text-sm text-gray-800 rounded-md bg-white"
           />
 
           {/* Button */}
