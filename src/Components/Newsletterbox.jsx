@@ -8,45 +8,45 @@ const Newsletterbox = () => {
 
   return (
     <section
-      className="relative my-20 bg-cover bg-center rounded-2xl overflow-hidden"
+      className="relative my-24 bg-cover bg-center"
       style={{ backgroundImage: `url(${assets.input_icon})` }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70"></div>
+      <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-3xl mx-auto px-6 py-16 text-center text-white">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-wide">
+      <div className="relative z-10 max-w-2xl mx-auto px-6 py-20 text-center text-white">
+        <h2 className="text-3xl md:text-4xl font-semibold">
           Join Our Community
         </h2>
 
-        <p className="mt-4 text-sm md:text-base text-gray-200 leading-relaxed">
-          Subscribe to receive exclusive offers, early access to new arrivals,
-          and the latest fashion trends delivered straight to your inbox.
+        <p className="mt-3 text-sm md:text-base text-gray-200">
+          Get exclusive offers, early access, and latest updates straight to
+          your inbox.
         </p>
 
-        {/* Form */}
+        {/* Input Box */}
         <form
           onSubmit={onSubmitHandler}
-          className="mt-8 flex flex-col sm:flex-row items-center gap-3 bg-white rounded-full p-2 max-w-xl mx-auto shadow-lg"
+          className="mt-8 flex items-center bg-white/95 rounded-md overflow-hidden max-w-lg mx-auto"
         >
           <input
             type="email"
             required
-            placeholder="Enter your email address"
-            className="w-full sm:flex-1 px-5 py-3 text-sm text-gray-700 rounded-full outline-none focus:ring-2 focus:ring-black/60"
+            placeholder="Enter your email"
+            className="flex-1 px-4 py-3 text-sm text-gray-700 outline-none"
           />
 
           <button
             type="submit"
-            className="w-full sm:w-auto bg-black text-white text-sm font-medium px-8 py-3 rounded-full hover:bg-gray-800 active:scale-95 transition-all"
+            className="bg-black text-white px-6 py-3 text-sm hover:bg-gray-900 transition"
           >
             Subscribe
           </button>
         </form>
 
-        <p className="mt-4 text-xs text-gray-300">
-          Get 20% off on your first order. No spam, unsubscribe anytime.
+        <p className="mt-3 text-xs text-gray-300">
+          20% off your first order. Unsubscribe anytime.
         </p>
       </div>
     </section>
