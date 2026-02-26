@@ -31,6 +31,14 @@ const Cart = () => {
     setCartData(temp);
   },[cartItems])
 
+  useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth", 
+  });
+}, []);
+  
   const increaseQty = (item) => {
     if(item.quantity >= MAX_QTY) {
       toast.error("You Cannot Add More Than 5 Items");
@@ -100,7 +108,7 @@ const Cart = () => {
                  </div>
                 </div>
                </TableCell>
-               <TableCell>{currency}{product.basePrice}</TableCell>
+               <TableCell>{currency}{products.basePrice}</TableCell>
                <TableCell>
                 <div className='flex items-center gap-3'>
                  <button onClick={()=>decreaseQty(item)} className='border p-1 cursor-pointer'><Minus size={16}/></button>
@@ -127,7 +135,7 @@ const Cart = () => {
             <p className='font-medium'>{product.name}</p>
             <p className="text-sm text-gray-500">
                   {currency}
-                  {product.price} · Size {item.size}
+                  {product.basePrice} · Size {item.size}
             </p>
             <div className='flex items-center justify-between mt-4'>
               <div className='flex items-center gap-3'>
