@@ -8,45 +8,46 @@ const Newsletterbox = () => {
 
   return (
     <section
-      className="relative my-24 bg-cover bg-center"
+      className="relative my-16 bg-cover bg-center"
       style={{ backgroundImage: `url(${assets.input_icon})` }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/60"></div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-2xl mx-auto px-6 py-20 text-center text-white">
-        <h2 className="text-3xl md:text-4xl font-semibold">
+      <div className="relative z-10 max-w-xl mx-auto px-4 sm:px-6 py-14 text-center text-white">
+        <h2 className="text-2xl sm:text-3xl font-semibold">
           Join Our Community
         </h2>
 
-        <p className="mt-3 text-sm md:text-base text-gray-200">
-          Get exclusive offers, early access, and latest updates straight to
-          your inbox.
+        <p className="mt-3 text-sm sm:text-base text-gray-200">
+          Get exclusive offers and updates directly in your inbox.
         </p>
 
-        {/* Input Box */}
+        {/* FORM */}
         <form
           onSubmit={onSubmitHandler}
-          className="mt-8 flex items-center bg-white/95 rounded-md overflow-hidden max-w-lg mx-auto"
+          className="mt-6 w-full"
         >
+          {/* Input */}
           <input
             type="email"
             required
-            placeholder="Enter your email"
-            className="flex-1 px-4 py-3 text-sm text-gray-700 outline-none"
+            placeholder="Enter your email address"
+            className="w-full px-4 py-3 text-sm text-gray-800 rounded-md outline-none"
           />
 
+          {/* Button */}
           <button
             type="submit"
-            className="bg-black text-white px-6 py-3 text-sm hover:bg-gray-900 transition"
+            className="mt-3 w-full bg-black text-white py-3 text-sm rounded-md hover:bg-gray-900 transition"
           >
             Subscribe
           </button>
         </form>
 
         <p className="mt-3 text-xs text-gray-300">
-          20% off your first order. Unsubscribe anytime.
+          20% off on first order. No spam.
         </p>
       </div>
     </section>
